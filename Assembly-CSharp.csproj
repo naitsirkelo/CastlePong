@@ -54,8 +54,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BallController.cs" />
+     <Compile Include="Assets\CameraFollowYAxis.cs" />
      <Compile Include="Assets\GameController.cs" />
-     <Compile Include="Assets\PadController.cs" />
+     <Compile Include="Assets\PadControllerBot.cs" />
+     <Compile Include="Assets\PadControllerTop.cs" />
      <Compile Include="Assets\Timer.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

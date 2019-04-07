@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public BallController ball;
-    public PadController pad;
+    public PadControllerBot padBot;
+    public PadControllerTop padTop;
 
     // Start is called before the first frame update
     void Start()

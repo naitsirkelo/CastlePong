@@ -11,6 +11,9 @@ TagManager:
   - PadBot
   - WallLeft
   - WallRight
+  - Bottom
+  - Obstacle
+  - Collectable
   layers:
   - Default
   - TransparentFX

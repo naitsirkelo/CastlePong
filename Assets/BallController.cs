@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour {
 
     float radius;
     float padWidth;
-    float padHit = 0.0f;
+    // float padHit = 0.0f;
     float xPos, yPos;
 
     public float moveSpeed = 6.0f;
@@ -58,27 +58,26 @@ public class BallController : MonoBehaviour {
 
     void Update() {
         rigidbody.freezeRotation = true;
-        xPos = rigidbody.position.x;
-        yPos = rigidbody.position.y;
-        Debug.Log("x: " + xPos + "  y: " + yPos);
-        if (xPos < 0 || xPos > 200 || yPos < -1 || yPos > 8 || Input.GetKeyDown("space")) {
+        // xPos = rigidbody.position.x;
+        // yPos = rigidbody.position.y;
+        // Debug.Log("x: " + xPos + "  y: " + yPos);
+        if (Input.GetKeyDown("space")) {
             NewBall();
         }
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "PadTop") {
-            rigidbody.AddForce(new Vector3 (padHit, moveSpeed*movement.y*-2, 0));
+        if (other.gameObject.tag == "Bottom") {
+            NewBall();
         }
-        if (other.gameObject.tag == "PadBot") {
-            rigidbody.AddForce(new Vector3 (padHit, moveSpeed*movement.y*2, 0));
+        if (other.gameObject.tag == "Obstacle") {
+            StartCoroutine(RemoveObject(other));
         }
-        if (other.gameObject.tag == "WallLeft") {
-            rigidbody.AddForce(new Vector3 (moveSpeed*movement.x*2, 0, 0));
-        }
-        if (other.gameObject.tag == "WallRight") {
-            rigidbody.AddForce(new Vector3 (moveSpeed*movement.x*-2, 0, 0));
-        }
+    }
+
+    IEnumerator RemoveObject(Collision2D o) {
+        yield return new WaitForSeconds(0.1f);
+        o.gameObject.SetActive(false);
     }
 
     // void OnTriggerEnter2D(Collider2D other) {
@@ -109,5 +108,17 @@ public class BallController : MonoBehaviour {
     //             rigidbody.AddForce(new Vector3(0, 0, 0));
     //         }
     //     }
+    // }
+    // if (other.gameObject.tag == "PadTop") {
+    //     rigidbody.AddForce(new Vector3 (padHit, moveSpeed*movement.y*-2, 0));
+    // }
+    // if (other.gameObject.tag == "PadBot") {
+    //     rigidbody.AddForce(new Vector3 (padHit, moveSpeed*movement.y*2, 0));
+    // }
+    // if (other.gameObject.tag == "WallLeft") {
+    //     rigidbody.AddForce(new Vector3 (moveSpeed*movement.x*2, 0, 0));
+    // }
+    // if (other.gameObject.tag == "WallRight") {
+    //     rigidbody.AddForce(new Vector3 (moveSpeed*movement.x*-2, 0, 0));
     // }
 }
